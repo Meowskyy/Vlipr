@@ -1,0 +1,27 @@
+{
+  "name": "vlipr",
+  "version": "0.0.0",
+  "description": "A universal video downloader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+	"dist": "electron-builder"
+  },
+
+  "author": "Meowskyy",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.0",
+    "electron-builder": "^22.1.0"
+  },
+  "dependencies": {
+    "youtube-dl": "^2.1.0"
+  },
+	"build": {
+	  "appId": "your.id",
+	  "mac": {
+		"category": "your.app.category.type"
+	  }
+	}
+}

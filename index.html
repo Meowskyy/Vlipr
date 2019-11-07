@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- TITLE BAR CONTROLS-->
+    <header id="titlebar">
+      <div id="drag-region">
+
+        <div id="window-title">
+          <span class="noselect">Vlipr</span>
+        </div>
+
+        <div id="window-controls">
+          <div class="button" id="min-button">
+            <span>&#xE921;</span>
+          </div>
+          <div class="button" id="max-button">
+            <span>&#xE922;</span>
+          </div>
+          <div class="button" id="restore-button">
+            <span>&#xE923;</span>
+          </div>
+          <div class="button" id="close-button">
+            <span>&#xE8BB;</span>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+     <!-- MAIN UI -->
+     <div>
+      <div id="main">
+        <input type="text" name="linkInput" id="linkInput" placeholder="Insert a video link...">
+        <div class="button" id="download-button">
+          <span class="noselect">Download</span>
+        </div>
+
+        <div class="videos" id="links">
+            <p class="noselect">VIDEOS</p>
+          </div>
+      </div>
+
+      <!-- EXTRA BUTTONS -->
+      <div id="rightNav">
+        <div id="settings">        
+          <p class="noselect">SETTINGS</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // You can also require other files to run in this process
+      require('./js/renderer.js')
+    </script>
+  </body>
+</html>
