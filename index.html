@@ -34,7 +34,7 @@
     </header>
 
      <!-- MAIN UI -->
-     <div>
+     <div id="container">
       <div id="main">
         <input type="text" name="linkInput" id="linkInput" placeholder="Insert a video link...">
         <div class="button" id="download-button">
@@ -47,8 +47,50 @@
       </div>
 
       <!-- EXTRA BUTTONS -->
+      <div id="loadingSlider">
+        <p class="noselect">Download Progress</p>
+        <div id="loadingBG">   
+            <div id="loadingBar">   
+                <p class="noselect">0/0</p>
+            </div>
+        </div>
+      </div>
+      
+      <div id="settings" class="slide-right">
+        <div class="settings-tab">
+            <div class="button" id="folder-select-button">
+                <input type="text" name="folderInput" id="folderInput" placeholder="Set a custom download folder...">
+            </div>
+
+            <details class="noselect">
+                <summary class="noselect">Youtube</summary>
+                <div class="dropdown">
+                  <button class="dropbtn">Video Quality
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="#">Lowest</a>
+                    <a href="#">Average</a>
+                    <a href="#">Highest</a>
+                  </div>
+                </div>
+            </details>
+
+            <details class="noselect">
+                <summary class="noselect">Twitch</summary>
+                Some option XD
+            </details>
+
+            <details class="noselect">
+                <summary class="noselect">Plays.TV</summary>
+                Some option XD
+            </details>
+        </div>
+      </div>
+
+      <!-- EXTRA BUTTONS -->
       <div id="rightNav">
-        <div id="settings">        
+        <div id="settings-button">        
           <p class="noselect">SETTINGS</p>
         </div>
       </div>

@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-	"dist": "electron-builder"
+    "dist": "electron-builder"
   },
-
   "author": "Meowskyy",
   "license": "ISC",
   "devDependencies": {
@@ -16,12 +15,14 @@
     "electron-builder": "^22.1.0"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "phantom": "^6.3.0",
     "youtube-dl": "^2.1.0"
   },
-	"build": {
-	  "appId": "your.id",
-	  "mac": {
-		"category": "your.app.category.type"
-	  }
-	}
+  "build": {
+    "appId": "your.id",
+    "mac": {
+      "category": "your.app.category.type"
+    }
+  }
 }

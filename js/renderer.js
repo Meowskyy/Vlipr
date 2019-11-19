@@ -3,6 +3,16 @@
 // All of the Node.js APIs are available in this process.
 const remote = require('electron').remote;
 const downloader = require('./downloader');
+const mainProcess = remote.require('./index')
+document.getElementById('folder-select-button').addEventListener('click', _ => {
+    mainProcess.selectDirectory().then(data => { 
+        // console.log(data.canceled);
+        if (data.canceled == false) {
+            // console.log(data.filePaths);
+            document.getElementById("folderInput").value = data.filePaths;
+        }
+    });
+})
 
 // When document has loaded, initialise
 document.onreadystatechange = () => {
@@ -45,15 +55,65 @@ function handleWindowControls() {
     }
 }
 
+var isSettingsOpen = false;
+var videoLinks = [];
 function handleOtherControls() {
-    document.getElementById('download-button').addEventListener("click", event => {
-        var inputVal = document.getElementById("linkInput").value;
-
-        var node = document.createElement("div");     // Create a <div> node
-        var textnode = document.createTextNode(inputVal);   // Create a text node
-        node.appendChild(textnode);                              // Append the text to <li>
-
-        document.getElementById("links").appendChild(node);     // Append <li> to <ul> with id="myList"
-        //downloader.downloadVideo ('http://www.youtube.com/watch?v=90AiXO1pAiA');
+    // Execute a function when the user releases a key on the keyboard
+    document.getElementById('linkInput').addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            addLinks();
+        }
     });
+
+
+    document.getElementById('download-button').addEventListener("click", event => {
+        addLinks();
+
+        if (videoLinks.length > 0) {
+            videoLinks.forEach(function(element) {
+                console.log("Downloading: " + element);
+                downloader.downloadVideo (element);
+            });
+        }
+    });
+
+    document.getElementById('settings-button').addEventListener("click", event => {
+        isSettingsOpen = !isSettingsOpen;
+        var node = document.getElementById("settings");
+
+        if (isSettingsOpen) 
+        {
+            //console.log("Settings opening");
+            node.classList.remove("slide-right");
+            node.classList.add("slide-left");
+        } else {
+            //console.log("Settings closed");
+            node.classList.remove("slide-left");
+            node.classList.add("slide-right");
+        }
+    });
+}
+
+function addLinks() {
+    var inputVal = document.getElementById("linkInput").value;
+    document.getElementById("linkInput").value = "";
+    var links = inputVal.split(" ");
+
+    if (links.length > 0) {
+        links.forEach(function(element) {
+            var node = document.createElement("div");     // Create a <div> node
+            var textnode = document.createTextNode(element);   // Create a text node
+            node.appendChild(textnode);                              // Append the text to <li>
+
+            document.getElementById("links").appendChild(node);     // Append <li> to <ul> with id="myList"
+
+            videoLinks.push(element);
+        });
+    }
+
+    console.log("All links: " + videoLinks);
 }
